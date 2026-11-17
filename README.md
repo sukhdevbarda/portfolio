@@ -100,7 +100,7 @@ portfolio/
 
 ## 📬 Contact
 
-- 📧 **Email:** [sukhdev.singh@smartdatainc.net](mailto:sukhdev.singh@smartdatainc.net)
+- 📧 **Email:** [sukhdevsingh79843@gmail.com](mailto:sukhdevsingh79843@gmail.com)
 - 📍 **Location:** Mohali, India
 
 ---
