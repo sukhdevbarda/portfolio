@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sukhdev Singh — Lead Developer & Full-Stack Architect</title>
+<meta name="description" content="Sukhdev Singh — Lead Developer and Full-Stack Architect with 11+ years building Node.js, microservices and AWS platforms for healthcare and fintech.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F6FB; --bg2:#FFFFFF; --card:rgba(255,255,255,.75); --card-solid:#FFFFFF;
+  --ink:#141833; --muted:#5A6180; --line:rgba(20,24,51,.10);
+  --a1:#6D5BFF; --a2:#00B8D9; --a3:#FF5FA2;
+  --glow:rgba(109,91,255,.18); --chip:rgba(109,91,255,.08);
+  --head:"Sora","Segoe UI",system-ui,sans-serif; --body:"Inter","Segoe UI",system-ui,sans-serif;
+  color-scheme:light; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#070A1A; --bg2:#0C1027; --card:rgba(255,255,255,.045); --card-solid:#11163A;
+  --ink:#EEF0FF; --muted:#A3A9C9; --line:rgba(255,255,255,.09);
+  --a1:#8B7BFF; --a2:#2EE6FF; --a3:#FF6FB5; --glow:rgba(139,123,255,.25); --chip:rgba(139,123,255,.12);
+  color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#070A1A; --bg2:#0C1027; --card:rgba(255,255,255,.045); --card-solid:#11163A;
+  --ink:#EEF0FF; --muted:#A3A9C9; --line:rgba(255,255,255,.09);
+  --a1:#8B7BFF; --a2:#2EE6FF; --a3:#FF6FB5; --glow:rgba(139,123,255,.25); --chip:rgba(139,123,255,.12);
+  color-scheme:dark;}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 90px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--a2);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--head);margin:0;line-height:1.1}
+.grad{background:linear-gradient(100deg,var(--a1),var(--a2) 55%,var(--a3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* Aurora background */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+.aurora i:nth-child(1){width:560px;height:560px;background:var(--a1);top:-180px;left:-120px}
+.aurora i:nth-child(2){width:460px;height:460px;background:var(--a2);top:20%;right:-160px;opacity:.35}
+.aurora i:nth-child(3){width:420px;height:420px;background:var(--a3);bottom:-200px;left:30%;opacity:.25}
+.grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%)}
+@media (prefers-reduced-motion:no-preference){
+  .aurora i{animation:float 18s ease-in-out infinite alternate}
+  .aurora i:nth-child(2){animation-duration:22s}
+  .aurora i:nth-child(3){animation-duration:26s}
+  @keyframes float{to{transform:translate(80px,60px) scale(1.15)}}
+}
+
+/* Nav */
+header{position:fixed;top:0;left:0;right:0;z-index:20;padding-top:env(safe-area-inset-top,0px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.nav{margin:14px auto 0;max-width:1180px;width:calc(100% - 32px);display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:10px 12px 10px 18px;border:1px solid var(--line);border-radius:16px;background:var(--card);
+  backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%)}
+.logo{font-family:var(--head);font-weight:800;font-size:1.15rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;color:#fff;font-size:.9rem;background:linear-gradient(135deg,var(--a1),var(--a2))}
+.links{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.links a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--muted);padding:8px 14px;border-radius:10px;transition:color .2s,background .2s}
+.links a:hover{color:var(--ink);background:var(--chip)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--head);font-weight:600;font-size:.95rem;text-decoration:none;padding:12px 22px;border-radius:12px;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-main{color:#fff;background:linear-gradient(110deg,var(--a1),var(--a2));box-shadow:0 10px 30px -10px var(--a1)}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px var(--a1)}
+.btn-line{border-color:var(--line);background:var(--card)}
+.btn-line:hover{border-color:var(--a1)}
+.nav .btn{padding:10px 18px}
+
+/* Hero */
+.hero{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px;padding-top:120px;padding-bottom:60px}
+.badge{display:inline-flex;align-items:center;gap:10px;font-size:.9rem;font-weight:500;padding:7px 14px 7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+.hero h1{font-size:clamp(2.8rem,6.6vw,5.4rem);font-weight:800;letter-spacing:-.035em;margin:22px 0 14px}
+.typer{font-family:var(--head);font-size:clamp(1.25rem,2.4vw,1.75rem);font-weight:600;min-height:1.5em;color:var(--muted)}
+.typer span{color:var(--ink)}
+.typer .caret{display:inline-block;width:3px;height:1.05em;margin-left:4px;vertical-align:-.15em;background:var(--a2)}
+@media (prefers-reduced-motion:no-preference){.typer .caret{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}}
+.hero p.lead{max-width:34em;color:var(--muted);font-size:1.12rem;margin:18px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Orbit visual */
+.orbit{position:relative;width:min(440px,100%);aspect-ratio:1;margin:0 auto}
+.ring{position:absolute;inset:0;border:1px dashed var(--line);border-radius:50%}
+.ring.r2{inset:16%}
+.core{position:absolute;inset:31%;border-radius:50%;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(circle at 30% 25%,var(--a2),var(--a1) 55%,var(--a3));box-shadow:0 0 80px var(--glow),0 0 0 10px var(--chip)}
+.core strong{font-family:var(--head);font-size:clamp(2.2rem,5vw,3.2rem);font-weight:800;color:#fff;line-height:1}
+.core small{display:block;color:rgba(255,255,255,.85);font-size:.8rem;font-weight:500;margin-top:4px}
+.spin{position:absolute;inset:0}
+.spin.s2{inset:16%}
+.chipo{position:absolute;left:50%;top:50%;padding:8px 14px;border-radius:12px;font-family:var(--head);font-weight:600;font-size:.85rem;white-space:nowrap;
+  background:var(--card-solid);border:1px solid var(--line);box-shadow:0 10px 30px -12px rgba(0,0,0,.35)}
+.chipo::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:var(--c,var(--a1))}
+/* place chips on circle: rotate(angle) translate(radius) rotate(-angle) */
+.spin .chipo{transform:translate(-50%,-50%) rotate(var(--ang)) translateX(var(--rad)) rotate(calc(-1 * var(--ang)))}
+.spin.s1{--rad:min(220px,46vw)}
+.spin.s2{--rad:min(150px,31vw)}
+@media (prefers-reduced-motion:no-preference){
+  .spin.s1{animation:rot 40s linear infinite}
+  .spin.s2{animation:rot 30s linear infinite reverse}
+  .spin.s1 .chipo{animation:unrot 40s linear infinite}
+  .spin.s2 .chipo{animation:unrot 30s linear infinite reverse}
+  @keyframes rot{to{rotate:360deg}}
+  @keyframes unrot{to{rotate:-360deg}}
+}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-10px}
+.stat{padding:26px 24px;border-radius:20px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.stat strong{display:block;font-family:var(--head);font-size:clamp(2rem,3.4vw,2.7rem);font-weight:800;letter-spacing:-.03em}
+.stat span{color:var(--muted);font-size:.95rem}
+
+/* Sections */
+section.block{padding:110px 0 0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:44px}
+.head h2{font-size:clamp(2rem,4.2vw,3.2rem);font-weight:800;letter-spacing:-.03em}
+.head p{color:var(--muted);max-width:30em;margin:0}
+.kicker{display:inline-block;font-family:var(--head);font-weight:600;font-size:.95rem;margin-bottom:10px}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{padding:32px;border-radius:24px;border:1px solid var(--line);background:var(--card)}
+.panel h3{font-size:1.3rem;margin-bottom:12px}
+.panel p{color:var(--muted);margin:0 0 12px}
+.domains{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.domains span{padding:8px 14px;border-radius:999px;font-weight:500;font-size:.92rem;background:var(--chip);border:1px solid var(--line)}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.checks li{display:flex;gap:12px;color:var(--muted)}
+.checks li::before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:7px;
+  background:linear-gradient(135deg,var(--a1),var(--a2)) center/100% no-repeat;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='7'/%3E%3C/svg%3E");}
+.checks li{position:relative}
+.checks li::after{content:"";position:absolute;left:7px;top:8px;width:8px;height:5px;border:2px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg)}
+.checks b{color:var(--ink);font-weight:600}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skill{padding:26px;border-radius:22px;border:1px solid var(--line);background:var(--card);transition:transform .25s,border-color .25s}
+.skill:hover{transform:translateY(-4px);border-color:var(--a1)}
+.skill .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;color:#fff;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.skill .ic svg{width:22px;height:22px}
+.skill h3{font-size:1.1rem;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font-size:.85rem;font-weight:500;padding:5px 11px;border-radius:8px;background:var(--chip);color:var(--ink)}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.proj{position:relative;padding:30px;border-radius:24px;border:1px solid var(--line);background:var(--card);overflow:hidden;transition:transform .3s,box-shadow .3s}
+.proj::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--p1),var(--p2))}
+.proj::after{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-90px;border-radius:50%;background:var(--p1);opacity:.10;filter:blur(30px);transition:opacity .3s}
+.proj:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px var(--p1)}
+.proj:hover::after{opacity:.22}
+.proj .top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:6px}
+.proj h3{font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.proj .dom{font-size:.85rem;font-weight:600;padding:5px 11px;border-radius:999px;white-space:nowrap;color:var(--p1);border:1px solid currentColor}
+.proj p{color:var(--muted);margin:8px 0 16px}
+.proj ul{margin:0 0 18px;padding-left:1.1em;color:var(--muted)}
+.proj li{margin-bottom:6px}
+.proj li::marker{color:var(--p1)}
+.impact{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:.95rem;padding:12px 14px;border-radius:12px;background:var(--chip);margin-bottom:16px}
+.impact::before{content:"★";color:var(--p1)}
+.proj .tags span{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.proj.feature{grid-column:1/-1}
+.proj.feature .inner{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+.pipe{display:grid;gap:14px;padding:22px;border-radius:18px;background:var(--bg2);border:1px solid var(--line)}
+.pipe h4{margin:0;font-family:var(--head);font-size:1rem}
+.pipe .row{display:grid;grid-template-columns:60px 1fr 70px;gap:12px;align-items:center;font-size:.9rem;font-weight:500}
+.pipe .bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden}
+.pipe .bar i{display:block;height:100%;border-radius:6px;transform-origin:0 50%}
+.pipe .b1 i{width:100%;background:var(--muted)}
+.pipe .b2 i{width:22%;background:linear-gradient(90deg,var(--a1),var(--a2))}
+.pipe .note{color:var(--muted);font-size:.88rem;margin:0}
+
+/* Leadership */
+.lead-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:22px}
+.quote{padding:38px;border-radius:24px;color:#fff;background:linear-gradient(140deg,var(--a1),#4B3BD9 45%,var(--a3));position:relative;overflow:hidden}
+.quote::after{content:"“";position:absolute;right:20px;bottom:-60px;font-family:var(--head);font-size:16rem;line-height:1;opacity:.15}
+.quote p{font-family:var(--head);font-size:clamp(1.35rem,2.4vw,1.8rem);font-weight:600;line-height:1.35;margin:0 0 20px}
+.quote small{opacity:.85;font-size:.95rem}
+.lead-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lead-item{padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--card)}
+.lead-item h3{font-size:1rem;margin-bottom:6px}
+.lead-item p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* Contact */
+.contact{margin:110px 0 40px;padding:64px 40px;border-radius:32px;text-align:center;position:relative;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.contact::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,var(--a1),var(--a2),var(--a3),var(--a1));opacity:.14;filter:blur(60px)}
+.contact > *{position:relative}
+.contact h2{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;letter-spacing:-.035em;margin-bottom:14px}
+.contact p{color:var(--muted);max-width:34em;margin:0 auto 30px}
+.contact .cta{justify-content:center}
+.meta{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px;margin-top:34px;color:var(--muted);font-size:.95rem}
+.meta b{color:var(--ink);font-weight:600}
+footer{padding:10px 0 40px;text-align:center;color:var(--muted);font-size:.9rem}
+
+/* Scroll reveal (progressive enhancement) */
+@media (prefers-reduced-motion:no-preference){
+  @supports ((animation-timeline:view()) and (animation-range:entry)){
+    @keyframes rise{from{opacity:0;transform:translateY(40px)}}
+    .reveal{animation:rise auto ease-out backwards;animation-timeline:view();animation-range:entry 0% entry 70%}
+  }
+  .hero-in > *{animation:heroin .9s cubic-bezier(.2,.7,.2,1) backwards}
+  .hero-in > *:nth-child(2){animation-delay:.1s}
+  .hero-in > *:nth-child(3){animation-delay:.2s}
+  .hero-in > *:nth-child(4){animation-delay:.3s}
+  .hero-in > *:nth-child(5){animation-delay:.4s}
+  @keyframes heroin{from{opacity:0;transform:translateY(24px)}}
+}
+
+/* Responsive */
+@media (max-width:980px){
+  .links{display:none}
+  .hero{grid-template-columns:1fr;text-align:left;padding-top:110px}
+  .orbit{width:min(360px,90vw);margin-top:10px}
+  .spin.s1{--rad:min(165px,39vw)} .spin.s2{--rad:min(115px,28vw)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .about,.lead-grid{grid-template-columns:1fr}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .projects{grid-template-columns:1fr}
+  .proj.feature .inner{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .wrap{padding:0 18px}
+  .skills,.lead-list{grid-template-columns:1fr}
+  .chipo{font-size:.72rem;padding:6px 10px}
+  .stat{padding:20px 18px}
+  .panel,.proj,.quote{padding:24px}
+  .contact{padding:44px 22px;border-radius:24px}
+  .nav .btn{padding:9px 14px;font-size:.88rem}
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top"><b>SS</b>Sukhdev Singh</a>
+    <ul class="links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+    </ul>
+    <a class="btn btn-main" href="#contact">Hire me</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-in">
+        <span class="badge"><span class="dot"></span>Open to lead and architect roles</span>
+        <h1>Hi, I'm <span class="grad">Sukhdev Singh</span></h1>
+        <div class="typer" aria-label="Lead Developer, Full-Stack Architect, Node.js and AWS expert">I'm a <span id="type">Lead Developer</span><i class="caret" aria-hidden="true"></i></div>
+        <p class="lead">I build scalable backend platforms for healthcare, fintech and insurance. 11+ years of experience, with 5+ years running Node.js in production.</p>
+        <div class="cta">
+          <a class="btn btn-main" href="#work">View my projects</a>
+          <a class="btn btn-line" href="mailto:sukhdev.singh@smartdatainc.net">Contact me</a>
+        </div>
+      </div>
+
+      <div class="orbit" aria-hidden="true">
+        <div class="ring"></div><div class="ring r2"></div>
+        <div class="core"><div><strong>11+</strong><small>years building</small></div></div>
+        <div class="spin s1">
+          <span class="chipo" style="--ang:0deg;--c:#3C873A">Node.js</span>
+          <span class="chipo" style="--ang:60deg;--c:#FF9900">AWS</span>
+          <span class="chipo" style="--ang:120deg;--c:#2496ED">Docker</span>
+          <span class="chipo" style="--ang:180deg;--c:#47A248">MongoDB</span>
+          <span class="chipo" style="--ang:240deg;--c:#61DAFB">React</span>
+          <span class="chipo" style="--ang:300deg;--c:#DD0031">Angular</span>
+        </div>
+        <div class="spin s2">
+          <span class="chipo" style="--ang:30deg;--c:#3178C6">TypeScript</span>
+          <span class="chipo" style="--ang:150deg;--c:#336791">PostgreSQL</span>
+          <span class="chipo" style="--ang:270deg;--c:#DC382D">Redis</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats reveal">
+      <div class="stat"><strong class="grad">11+</strong><span>Years of experience</span></div>
+      <div class="stat"><strong class="grad">20</strong><span>Developers led at once</span></div>
+      <div class="stat"><strong class="grad">80%</strong><span>Faster CI/CD builds</span></div>
+      <div class="stat"><strong class="grad">5x</strong><span>Faster deployments</span></div>
+    </div>
+
+    <!-- About -->
+    <section class="block" id="about">
+      <div class="head reveal">
+        <div><span class="kicker grad">About me</span><h2>Architect who still writes code</h2></div>
+        <p>I design systems, lead teams, and stay hands-on from the database to the deploy.</p>
+      </div>
+      <div class="about">
+        <div class="panel reveal">
+          <h3>Who I am</h3>
+          <p>I'm a Lead Developer and Full-Stack Architect based in Mohali, India. I specialize in MEAN and MERN stacks, microservices, and cloud on AWS.</p>
+          <p>I've built HIPAA and FHIR compliant healthcare apps, Sharia-compliant fintech, and insurance platforms used by real patients and investors.</p>
+          <div class="domains"><span>Healthcare</span><span>Fintech</span><span>Insurance</span><span>Telemedicine</span><span>Investment</span></div>
+        </div>
+        <div class="panel reveal">
+          <h3>What I bring</h3>
+          <ul class="checks">
+            <li><span><b>Microservices design</b> with Node.js, TypeScript and Docker</span></li>
+            <li><span><b>CI/CD automation</b> that cut build time by 75–80%</span></li>
+            <li><span><b>Performance tuning</b> with 40–60% faster queries</span></li>
+            <li><span><b>Secure compliance</b> for HIPAA and FHIR</span></li>
+            <li><span><b>Team leadership</b> for teams of 4 to 20 people</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="block" id="skills">
+      <div class="head reveal">
+        <div><span class="kicker grad">Skills</span><h2>My tech stack</h2></div>
+        <p>Tools I've used to ship real products in production.</p>
+      </div>
+      <div class="skills">
+        <div class="skill reveal" style="--c1:#3C873A;--c2:#7BD389">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></div>
+          <h3>Backend</h3>
+          <div class="tags"><span>Node.js</span><span>Express.js</span><span>TypeScript</span><span>PHP</span><span>Laravel</span><span>REST APIs</span></div>
+        </div>
+        <div class="skill reveal" style="--c1:#6D5BFF;--c2:#00B8D9">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8"/></svg></div>
+          <h3>Frontend</h3>
+          <div class="tags"><span>React</span><span>Angular</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>Chart.js</span></div>
+        </div>
+        <div class="skill reveal" style="--c1:#0EA5A4;--c2:#47A248">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <h3>Databases</h3>
+          <div class="tags"><span>PostgreSQL</span><span>MongoDB</span><span>MySQL</span><span>DynamoDB</span><span>Redis</span><span>Prisma</span></div>
+        </div>
+        <div class="skill reveal" style="--c1:#FF9900;--c2:#FF5FA2">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 18a4 4 0 0 1-.6-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1-.5 9z"/></svg></div>
+          <h3>AWS Cloud</h3>
+          <div class="tags"><span>EC2</span><span>S3</span><span>RDS</span><span>Lambda</span><span>Step Functions</span><span>CloudFront</span><span>SES</span></div>
+        </div>
+        <div class="skill reveal" style="--c1:#2496ED;--c2:#6D5BFF">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div>
+          <h3>DevOps</h3>
+          <div class="tags"><span>Docker</span><span>GitHub Actions</span><span>CI/CD</span><span>Zero-downtime deploys</span></div>
+        </div>
+        <div class="skill reveal" style="--c1:#FF5FA2;--c2:#8B7BFF">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div>
+          <h3>Integrations</h3>
+          <div class="tags"><span>Stripe</span><span>PayPal</span><span>Plaid</span><span>Socket.IO</span><span>WebRTC</span><span>Kafka</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="block" id="work">
+      <div class="head reveal">
+        <div><span class="kicker grad">Projects</span><h2>Featured work</h2></div>
+        <p>Six platforms across healthcare and fintech that I helped design, build and ship.</p>
+      </div>
+
+      <div class="projects">
+        <article class="proj feature reveal" style="--p1:var(--a1);--p2:var(--a2)">
+          <div class="inner">
+            <div>
+              <div class="top"><h3>Continuity Connect</h3><span class="dom">Aged Care</span></div>
+              <p>A care provider and aged care management platform built on 6 microservices.</p>
+              <ul>
+                <li>Designed 6 services: API Gateway, User, Client, Communication, Funding and Provider.</li>
+                <li>Set up Docker for dev, staging and production with PostgreSQL and Prisma.</li>
+                <li>Built zero-downtime deploys with health checks and Redis sessions.</li>
+              </ul>
+              <div class="tags"><span>Node.js</span><span>TypeScript</span><span>Express</span><span>PostgreSQL</span><span>Docker</span><span>Redis</span></div>
+            </div>
+            <div class="pipe">
+              <h4>CI/CD build time</h4>
+              <div class="row"><span>Before</span><div class="bar b1"><i></i></div><span>15–20 min</span></div>
+              <div class="row"><span>After</span><div class="bar b2"><i></i></div><span><b>3–5 min</b></span></div>
+              <p class="note">Moved to GitHub Actions: 75–80% faster builds and 4–5x more deployments.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="proj reveal" style="--p1:#00B8D9;--p2:#22C55E">
+          <div class="top"><h3>Previnci</h3><span class="dom">Healthcare</span></div>
+          <p>Preventive healthcare insurance platform on the MEAN stack.</p>
+          <ul>
+            <li>Delivered 15+ enterprise features across sprints.</li>
+            <li>Real-time updates and notifications with Socket.IO.</li>
+          </ul>
+          <div class="impact">Charts for 50,000+ data points in real time</div>
+          <div class="tags"><span>MongoDB</span><span>Express</span><span>Angular</span><span>Node.js</span><span>Chart.js</span></div>
+        </article>
+
+        <article class="proj reveal" style="--p1:#22C55E;--p2:#0EA5A4">
+          <div class="top"><h3>Tabadulat</h3><span class="dom">Fintech</span></div>
+          <p>Sharia-compliant investment tracking and Zakat calculation platform.</p>
+          <ul>
+            <li>Designed the microservices architecture on AWS.</li>
+            <li>Integrated Shufti Pro (KYC) and ZagTrader (trading).</li>
+          </ul>
+          <div class="impact">Led a 5-member team from setup to launch</div>
+          <div class="tags"><span>Node.js</span><span>React</span><span>MySQL</span><span>Sequelize</span><span>AWS</span></div>
+        </article>
+
+        <article class="proj reveal" style="--p1:#FF5FA2;--p2:#8B7BFF">
+          <div class="top"><h3>Curio Stella</h3><span class="dom">Digital Therapy</span></div>
+          <p>Digital therapeutics platform with evidence-based treatment programs.</p>
+          <ul>
+            <li>Built APIs for sign-up, login, Stripe payments and ratings.</li>
+            <li>Worked on the React Native Web companion app.</li>
+          </ul>
+          <div class="impact">FHIR and HIPAA compliant, in a 20-member team</div>
+          <div class="tags"><span>Node.js</span><span>Angular</span><span>MongoDB</span><span>AWS</span><span>Stripe</span></div>
+        </article>
+
+        <article class="proj reveal" style="--p1:#FF9900;--p2:#FF5FA2">
+          <div class="top"><h3>Fonemed</h3><span class="dom">Telemedicine</span></div>
+          <p>Virtual care and healthcare communication platform.</p>
+          <ul>
+            <li>Built serverless services with AWS Lambda and Step Functions.</li>
+            <li>Added S3 security controls and AWS Scheduler jobs.</li>
+          </ul>
+          <div class="impact">Owned deployment and AWS changes</div>
+          <div class="tags"><span>Node.js</span><span>Lambda</span><span>DynamoDB</span><span>Step Functions</span></div>
+        </article>
+
+        <article class="proj feature reveal" style="--p1:#8B7BFF;--p2:#FF9900">
+          <div class="inner">
+            <div>
+              <div class="top"><h3>Trellis Televet</h3><span class="dom">Vet Telehealth</span></div>
+              <p>A veterinary telemedicine platform that connects pet owners and vets by video call and chat.</p>
+              <ul>
+                <li>Owned specs, database design and full-stack development.</li>
+                <li>Added Google Maps for location and AWS SES for emails.</li>
+              </ul>
+              <div class="tags"><span>Node.js</span><span>Angular</span><span>MongoDB</span><span>AWS SES</span><span>Google Maps</span></div>
+            </div>
+            <div class="pipe">
+              <h4>My role</h4>
+              <p class="note">Led a team of 4, planned the tasks, and managed deployment on AWS for pet owner, vet and admin users.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="block" id="leadership">
+      <div class="head reveal">
+        <div><span class="kicker grad">Leadership</span><h2>How I lead teams</h2></div>
+        <p>Clear plans, honest reviews, and helping people grow.</p>
+      </div>
+      <div class="lead-grid">
+        <div class="quote reveal">
+          <p>I've led teams of 4 to 20 people across backend, frontend, QA and DevOps. My goal is simple: make good engineering the easy path.</p>
+          <small>Sukhdev Singh</small>
+        </div>
+        <div class="lead-list">
+          <div class="lead-item reveal"><h3>Agile delivery</h3><p>Sprint planning, stand-ups, retros and milestone ownership.</p></div>
+          <div class="lead-item reveal"><h3>Architecture reviews</h3><p>Design and database reviews before anything ships.</p></div>
+          <div class="lead-item reveal"><h3>Mentoring</h3><p>Coaching junior developers and building team skills.</p></div>
+          <div class="lead-item reveal"><h3>Client communication</h3><p>Explaining tech choices clearly to non-technical people.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact reveal" id="contact">
+      <span class="kicker grad">Contact</span>
+      <h2>Let's build something <span class="grad">great</span></h2>
+      <p>Looking for a lead developer or architect for your next platform? I'd love to hear about it.</p>
+      <div class="cta">
+        <a class="btn btn-main" href="mailto:sukhdev.singh@smartdatainc.net">Send me an email</a>
+        <a class="btn btn-line" href="#work">See projects again</a>
+      </div>
+      <div class="meta">
+        <span><b>Email:</b> sukhdev.singh@smartdatainc.net</span>
+        <span><b>Location:</b> Mohali, India</span>
+        <span><b>Languages:</b> English, Hindi, Punjabi</span>
+      </div>
+    </section>
+  </div>
+</main>
+<footer>© 2026 Sukhdev Singh. Built with care.</footer>
+
+<script>
+(function(){
+  var el=document.getElementById('type');
+  if(!el||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var words=['Lead Developer','Full-Stack Architect','Node.js & AWS Expert','Microservices Builder'];
+  var w=0,i=words[0].length,del=true;
+  function tick(){
+    var word=words[w];
+    if(del){ i--; if(i<=0){ del=false; w=(w+1)%words.length; } }
+    else { i++; if(i>=words[w].length){ del=true; el.textContent=words[w]; return setTimeout(tick,1800); } }
+    el.textContent=words[w].slice(0,Math.max(i,0));
+    setTimeout(tick,del?45:85);
+  }
+  setTimeout(tick,2200);
+})();
+</script>
+</body>
+</html>
